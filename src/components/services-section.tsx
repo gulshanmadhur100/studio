@@ -26,11 +26,11 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="py-12 md:py-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-headline">
+    <section className="py-10 md:py-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
         Our Services
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service) => (
           <Card key={service.title} className="text-center bg-card/50 backdrop-blur-sm shadow-md hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 rounded-xl">
             <CardHeader className="items-center">
