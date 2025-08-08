@@ -7,7 +7,7 @@ This is a web application for BigBul Services, a company providing technology, t
 *   **Framework**: [Next.js](https://nextjs.org/) (with App Router)
 *   **UI**: [React](https://reactjs.org/)
 *   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-*   **UI Components**: [ShadCN/UI](httpshttps://ui.shadcn.com/)
+*   **UI Components**: [ShadCN/UI](https://ui.shadcn.com/)
 *   **Icons**: [Lucide React](https://lucide.dev/guide/packages/lucide-react)
 *   **Deployment**: Firebase App Hosting
 
@@ -24,6 +24,7 @@ This is a web application for BigBul Services, a company providing technology, t
 │   │   ├── ui              # ShadCN UI components
 │   │   ├── hero-section.tsx
 │   │   ├── services-section.tsx
+│   │   ├── personalized-greeting.tsx
 │   │   └── footer.tsx
 │   └── lib
 │       └── utils.ts        # Utility functions (e.g., cn for classnames)
