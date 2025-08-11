@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { services } from "@/lib/services";
+import { services } from "@/lib/services.tsx";
 import Link from "next/link";
 
 export function ServicesSection() {

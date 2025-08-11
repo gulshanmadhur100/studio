@@ -1,4 +1,4 @@
-import { services } from "@/lib/services";
+import { services } from "@/lib/services.tsx";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
