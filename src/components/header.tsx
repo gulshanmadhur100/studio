@@ -7,9 +7,12 @@ export function Header() {
         <Link href="/" className="text-2xl font-bold font-headline tracking-tighter text-foreground">
           BigBul
         </Link>
-        <nav>
+        <nav className="flex items-center gap-4">
           <Link href="/" className="text-muted-foreground hover:text-accent transition-colors">
             Home
+          </Link>
+          <Link href="/#services" className="text-muted-foreground hover:text-accent transition-colors">
+            Services
           </Link>
         </nav>
       </div>
