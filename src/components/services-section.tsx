@@ -25,12 +25,12 @@ export function ServicesSection() {
                       </div>
                       <div className="flex-1">
                         <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                        <p className="text-muted-foreground mt-2 text-base font-normal">{service.description}</p>
+                        <p className="text-muted-foreground mt-2 text-base font-normal whitespace-normal">{service.description}</p>
                       </div>
                     </CardHeader>
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-6">
-                    <div className="prose prose-lg max-w-none text-foreground/90 -mt-2">
+                  <AccordionContent className="px-6 pb-6 pt-0">
+                    <div className="prose prose-lg max-w-none text-foreground/90">
                       {service.details}
                     </div>
                   </AccordionContent>
