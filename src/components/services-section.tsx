@@ -1,6 +1,11 @@
 import { services } from "@/lib/services";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export function ServicesSection() {
   return (
@@ -8,24 +13,31 @@ export function ServicesSection() {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
         Our Services
       </h2>
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {services.map((service) => (
-          <Link href={`/services/${service.slug}`} key={service.slug} className="block hover:shadow-lg transition-shadow rounded-lg">
-            <Card className="h-full flex flex-col">
-              <CardHeader className="flex-row items-center gap-4">
-                <div className="p-3 bg-accent/10 rounded-full">
-                  {service.icon}
-                </div>
-                <div>
-                  <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{service.description}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {services.map((service) => (
+            <AccordionItem value={service.slug} key={service.slug} className="border-b-0">
+                <Card className="hover:shadow-lg transition-shadow rounded-lg">
+                  <AccordionTrigger className="w-full p-6 text-left hover:no-underline">
+                    <CardHeader className="flex-row items-center gap-4 p-0 w-full">
+                      <div className="p-3 bg-accent/10 rounded-full">
+                        {service.icon}
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
+                        <p className="text-muted-foreground mt-2 text-base font-normal">{service.description}</p>
+                      </div>
+                    </CardHeader>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose prose-lg max-w-none text-foreground/90 -mt-2">
+                      {service.details}
+                    </div>
+                  </AccordionContent>
+                </Card>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );
