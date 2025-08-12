@@ -44,9 +44,9 @@ const chooseGreetingTool = ai.defineTool(
   },
   async (input) => {
     // This can call any typescript function.
-    // For now, just return a random message.
-    const randomIndex = Math.floor(Math.random() * input.messages.length);
-    return input.messages[randomIndex];
+    // Use a deterministic method to choose a message to avoid hydration errors.
+    const index = input.userBrowsingHistory.length % input.messages.length;
+    return input.messages[index];
   }
 );
 
