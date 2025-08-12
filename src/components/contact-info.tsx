@@ -18,12 +18,12 @@ export function ContactInfo() {
             <WhatsappIcon className="h-6 w-6 text-green-500 group-hover:text-green-600 transition-colors" />
             <span className="group-hover:text-accent transition-colors">8294924270</span>
           </Link>
-          <div className="flex items-center gap-4">
+          <a href="mailto:corp@bigbul.in" className="flex items-center gap-4 group">
             <Mail className="h-6 w-6 text-accent" />
-            <a href="mailto:corp@bigbul.in" className="hover:text-accent transition-colors">
+            <span className="group-hover:text-accent transition-colors">
               corp@bigbul.in
-            </a>
-          </div>
+            </span>
+          </a>
           <div className="flex items-center gap-4">
             <Facebook className="h-6 w-6 text-accent" />
             <a href="https://www.facebook.com/bigbul" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
