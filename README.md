@@ -1,4 +1,4 @@
-# BigBul Services - Next.js & Firebase Studio Project
+it # BigBul Services - Next.js & Firebase Studio Project
 
 This is a web application for BigBul Services, a company providing technology, training, trading, and placement services. The application is built with Next.js and was bootstrapped with [Firebase Studio](https://firebase.google.com/studio).
 
