@@ -10,8 +10,8 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'BigBul Services',
-  description: 'Technology, Training, Trading, and Placement Services in Bengaluru.',
+  title: 'BigBul Services - Technology, Training & Trading',
+  description: 'BigBul Services offers cutting-edge technology solutions, expert-led training courses, and comprehensive trading support to help you succeed.',
 };
 
 export default function RootLayout({

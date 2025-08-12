@@ -4,12 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+// Explicitly set dynamicParams to false to ensure only paths defined in generateStaticParams are built.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
   }));
 }
-
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = services.find((s) => s.slug === params.slug);
 
