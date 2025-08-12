@@ -12,18 +12,20 @@ export function PersonalizedGreeting() {
     // based on actual user data.
     const userBrowsingHistory = "viewed technology services, read about training courses";
 
-    personalizedGreeting({ userBrowsingHistory })
-      .then((response) => {
+    const fetchGreeting = async () => {
+      try {
+        const response = await personalizedGreeting({ userBrowsingHistory });
         setGreeting(response.greeting);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching personalized greeting:", error);
         // Fallback to a default greeting in case of an error
         setGreeting("Welcome! We have a wide range of services to explore.");
-      })
-      .finally(() => {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+    
+    fetchGreeting();
   }, []);
 
   if (isLoading) {
