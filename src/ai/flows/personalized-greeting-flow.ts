@@ -9,6 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'zod';
 
 const PersonalizedGreetingInputSchema = z.object({
@@ -37,6 +38,7 @@ const prompt = ai.definePrompt({
   name: 'personalizedGreetingPrompt',
   input: {schema: PersonalizedGreetingInputSchema},
   output: {schema: PersonalizedGreetingOutputSchema},
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `You are a helpful assistant for BigBul Services. Your goal is to provide a warm, personalized greeting to returning users.
 
 Based on the user's (optional) ID, select one of the following greetings. Choose randomly if no user information is provided.
