@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Mail, Facebook } from "lucide-react";
+import { Mail, Facebook } from "lucide-react";
 import { WhatsappIcon } from "./whatsapp-icon";
 import Link from "next/link";
 
@@ -15,12 +15,9 @@ export function ContactInfo() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center gap-4">
-            <Phone className="h-6 w-6 text-accent" />
-            <a href="tel:8294924270" className="hover:text-accent transition-colors">
-              8294924270
-            </a>
-            <Link href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <Link href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="flex items-center gap-4">
               <WhatsappIcon className="h-6 w-6 text-green-500 hover:text-green-600 transition-colors" />
+               <span className="hover:text-accent transition-colors">8294924270</span>
             </Link>
           </div>
           <div className="flex items-center gap-4">
