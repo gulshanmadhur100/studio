@@ -7,18 +7,11 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [copyright, setCopyright] = useState<string | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    setYear(new Date().getFullYear());
   }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      setCopyright(`© ${new Date().getFullYear()} BigBul. All rights reserved.`);
-    }
-  }, [isMounted]);
 
 
   return (
@@ -67,8 +60,8 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50 h-5">
-           {copyright || ' '}
+        <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
+           {year ? `© ${year} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
         </p>
       </div>
     </footer>
