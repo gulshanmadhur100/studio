@@ -19,20 +19,22 @@ export function PersonalizedGreeting() {
           if (response.greeting) {
             setGreeting(response.greeting);
           } else {
+            // Fallback greeting if the flow returns nothing
             setGreeting("Welcome! Discover what we have to offer.");
           }
         })
         .catch((error) => {
           console.error("Failed to fetch personalized greeting:", error);
+          // Fallback greeting on error
           setGreeting("Welcome! We have a wide range of services to explore.");
         });
     }
   }, [isMounted]);
 
-  // Render a placeholder on the server and initial client render
-  if (!isMounted || !greeting) {
+  // Render a placeholder on the server and during initial client render to avoid hydration mismatch
+  if (!isMounted) {
     return <p className="text-xl md:text-2xl text-muted-foreground h-8"></p>; // Placeholder with fixed height
   }
-
-  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting}</p>;
+  
+  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting || "\u00A0"}</p>;
 }
