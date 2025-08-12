@@ -38,9 +38,9 @@ export function PersonalizedGreeting() {
   }, [isClient]);
 
   if (!isClient) {
-    // Render nothing on the server. The component will be rendered on the client.
-    // This is the key to preventing the hydration error.
-    return null;
+    // Render a placeholder on the server and during the initial client render.
+    // The actual content will be rendered only on the client after hydration.
+    return <p className="text-xl md:text-2xl text-muted-foreground">&nbsp;</p>;
   }
 
   if (isLoading) {

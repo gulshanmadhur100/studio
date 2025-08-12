@@ -6,17 +6,11 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [year, setYear] = useState<number | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setIsClient(true);
   }, []);
-
-  if (year === null) {
-    // Initial render on the server will be null, the component will render on the client.
-    // This is to avoid hydration errors with the date.
-    return null;
-  }
 
   return (
     <footer className="bg-card py-10 mt-16 border-t">
@@ -65,7 +59,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-          © {year} BigBul. All rights reserved.
+          {isClient ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
         </p>
       </div>
     </footer>
