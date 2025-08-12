@@ -13,8 +13,8 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <div className="grid md:grid-cols-2 gap-8">
-          <ContactSection />
           <ContactInfo />
+          <ContactSection />
         </div>
       </main>
       <Footer />
