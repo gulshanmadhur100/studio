@@ -5,31 +5,31 @@ import { useEffect, useState } from "react";
 import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState("Welcome! We have a wide range of services to explore.");
-  const [isLoading, setIsLoading] = useState(true);
+  const [greeting, setGreeting] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchGreeting = async () => {
-      try {
-        setIsLoading(true);
-        const response = await getPersonalizedGreeting({});
+    // This effect runs only on the client, after the component has mounted.
+    getPersonalizedGreeting({})
+      .then((response) => {
         if (response.greeting) {
           setGreeting(response.greeting);
+        } else {
+          // Set a default greeting if the flow returns nothing.
+          setGreeting("Welcome! Discover what we have to offer.");
         }
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error("Failed to fetch personalized greeting:", error);
-        // Fallback to a default greeting
-        setGreeting("Welcome! Discover what we have to offer.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
+        // Fallback to a default greeting on error.
+        setGreeting("Welcome! We have a wide range of services to explore.");
+      });
+  }, []); // The empty dependency array ensures this runs only once.
 
-    fetchGreeting();
-  }, []);
-  
-  if (isLoading) {
-    return <p className="text-xl md:text-2xl text-muted-foreground h-8 w-1/2 mx-auto animate-pulse bg-muted-foreground/30 rounded-md"></p>;
+  // On the server, and during the initial client render, this will return null,
+  // preventing a hydration mismatch. The greeting is only rendered on the
+  // client after the useEffect hook has run.
+  if (!greeting) {
+    return <p className="text-xl md:text-2xl text-muted-foreground h-8"></p>;
   }
 
   return <p className="text-xl md:text-2xl text-muted-foreground">{greeting}</p>;
