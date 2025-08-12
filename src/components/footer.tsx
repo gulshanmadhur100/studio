@@ -1,3 +1,4 @@
+
 "use client";
 
 import { MapPin, Mail, Facebook } from "lucide-react";
@@ -6,10 +7,10 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [isClient, setIsClient] = useState(false);
+  const [currentYear, setCurrentYear] = useState('');
 
   useEffect(() => {
-    setIsClient(true);
+    setCurrentYear(new Date().getFullYear().toString());
   }, []);
 
   return (
@@ -59,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-          {isClient ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
+          {currentYear ? `© ${currentYear} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
         </p>
       </div>
     </footer>
