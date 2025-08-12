@@ -1,16 +1,14 @@
 
 'use server';
 /**
- * @fileOverview A personalized greeting AI agent.
+ * @fileOverview A personalized greeting utility.
  *
- * - getPersonalizedGreeting - A function that handles the personalized greeting process.
+ * - getPersonalizedGreeting - A function that returns a personalized greeting.
  * - PersonalizedGreetingInput - The input type for the getPersonalizedGreeting function.
  * - PersonalizedGreetingOutput - The return type for the getPersonalizedGreeting function.
  */
 
-import {ai} from '@/ai/genkit';
-import {googleAI} from '@genkit-ai/googleai';
-import {z} from 'zod';
+import { z } from 'zod';
 
 const PersonalizedGreetingInputSchema = z.object({
   // In a real app, you'd pass user history here.
@@ -33,35 +31,14 @@ const greetings = [
   "Hey! We've got the tools and training to help you succeed."
 ];
 
-
-const prompt = ai.definePrompt({
-  name: 'personalizedGreetingPrompt',
-  input: {schema: PersonalizedGreetingInputSchema},
-  output: {schema: PersonalizedGreetingOutputSchema},
-  model: googleAI.model('gemini-1.5-flash'),
-  prompt: `You are a helpful assistant for BigBul Services. Your goal is to provide a warm, personalized greeting to returning users.
-
-Based on the user's (optional) ID, select one of the following greetings. Choose randomly if no user information is provided.
-
-Available Greetings:
-${greetings.map(g => `- ${g}`).join('\n')}
-
-Select one greeting.`,
-});
-
-const personalizedGreetingFlow = ai.defineFlow(
-  {
-    name: 'personalizedGreetingFlow',
-    inputSchema: PersonalizedGreetingInputSchema,
-    outputSchema: PersonalizedGreetingOutputSchema,
-  },
-  async (input) => {
-    const {output} = await prompt(input);
-    return output!;
-  }
-);
-
-
-export async function getPersonalizedGreeting(input: PersonalizedGreetingInput): Promise<PersonalizedGreetingOutput> {
-    return await personalizedGreetingFlow(input);
+/**
+ * Selects a random greeting from a predefined list.
+ * This function is now a simple utility and does not use AI.
+ * @param _input - The input object (currently unused).
+ * @returns A promise that resolves to the personalized greeting output.
+ */
+export async function getPersonalizedGreeting(_input: PersonalizedGreetingInput): Promise<PersonalizedGreetingOutput> {
+  const randomIndex = Math.floor(Math.random() * greetings.length);
+  const greeting = greetings[randomIndex];
+  return { greeting };
 }
