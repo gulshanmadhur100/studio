@@ -31,8 +31,9 @@ export function PersonalizedGreeting() {
   }, [isMounted]);
 
   if (!isMounted) {
-    return <p className="text-xl md:text-2xl text-muted-foreground h-8"></p>; 
+    return <p className="text-xl md:text-2xl text-muted-foreground h-8"> </p>; 
   }
   
-  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting || " "}</p>;
+  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting || " "}</p>;
 }
+

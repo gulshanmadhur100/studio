@@ -68,7 +68,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50 h-5">
-           {copyright || ' '}
+           {copyright || ' '}
         </p>
       </div>
     </footer>
