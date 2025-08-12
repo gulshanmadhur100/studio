@@ -11,16 +11,10 @@ export default function Home() {
       <Header />
       <main className="flex-grow container mx-auto px-4">
         <HeroSection />
-        <div className="grid lg:grid-cols-3 lg:gap-8">
-          <div className="lg:col-span-1">
-            <ServicesSection />
-          </div>
-          <div className="lg:col-span-1">
-            <ContactSection />
-          </div>
-          <div className="lg:col-span-1">
-            <ContactInfo />
-          </div>
+        <ServicesSection />
+        <div className="grid md:grid-cols-2 gap-8">
+          <ContactSection />
+          <ContactInfo />
         </div>
       </main>
       <Footer />
