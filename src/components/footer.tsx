@@ -62,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${currentYear} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
+           {isMounted ? `© ${currentYear} BigBul. All rights reserved.` : `© ${new Date().getFullYear()} BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>
