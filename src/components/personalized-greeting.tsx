@@ -5,15 +5,23 @@ import { useEffect, useState } from "react";
 import { personalizedGreeting } from "@/ai/flows/personalized-greeting";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState("");
+  const [greeting, setGreeting] = useState("Welcome! We have a wide range of services to explore.");
   const [isLoading, setIsLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     // A mock user browsing history. In a real application, this would be
     // based on actual user data.
     const userBrowsingHistory = "viewed technology services, read about training courses";
 
     const fetchGreeting = async () => {
+      setIsLoading(true);
       try {
         const response = await personalizedGreeting({ userBrowsingHistory });
         setGreeting(response.greeting);
@@ -27,10 +35,14 @@ export function PersonalizedGreeting() {
     };
     
     fetchGreeting();
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (isLoading) {
-    return <p className="text-xl md:text-2xl text-muted-foreground animate-pulse">Loading personalized greeting...</p>;
+    return <p className="text-xl md:text-2xl text-muted-foreground animate-pulse h-8 w-1/2 mx-auto bg-muted/50 rounded-md"></p>;
   }
 
   return <p className="text-xl md:text-2xl text-muted-foreground">{greeting}</p>;
