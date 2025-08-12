@@ -9,10 +9,12 @@ export function PersonalizedGreeting() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // This effect runs only on the client, after the component has mounted.
     setIsClient(true);
   }, []);
 
   useEffect(() => {
+    // This effect runs only on the client, and only after isClient is true.
     if (isClient) {
       // A mock user browsing history. In a real application, this would be
       // based on actual user data.
@@ -36,7 +38,9 @@ export function PersonalizedGreeting() {
   }, [isClient]);
 
   if (!isClient) {
-    return null; // Render nothing on the server
+    // Render nothing on the server. The component will be rendered on the client.
+    // This is the key to preventing the hydration error.
+    return null;
   }
 
   if (isLoading) {
