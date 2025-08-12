@@ -1,20 +1,13 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Poppins, Inter } from "next/font/google";
+import { PT_Sans } from "next/font/google";
 
-const poppins = Poppins({
+const ptSans = PT_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["400", "700"],
+  variable: "--font-pt-sans",
 });
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-inter",
-});
-
 
 export const metadata: Metadata = {
   title: 'BigBul Services',
@@ -27,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${poppins.variable} ${inter.variable} font-body antialiased`}>
+    <html lang="en" className={`${ptSans.variable} dark`}>
+      <body className={`font-body antialiased`}>
         {children}
         <Toaster />
       </body>
