@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,8 +16,10 @@ export function ContactSection() {
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
-    const mailtoLink = `mailto:corp@bigbul.in?subject=Contact from ${encodeURIComponent(name)} - ${encodeURIComponent(email)}&body=${encodeURIComponent(message)}`;
+    const subject = `Contact from ${name} - ${email}`;
+    const mailtoLink = `mailto:corp@bigbul.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
     
+    // This is a client-side only action, so we can safely use it inside an event handler
     window.location.href = mailtoLink;
   };
 
