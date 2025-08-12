@@ -13,11 +13,13 @@ export function Footer() {
   }, []);
 
   if (year === null) {
-    return null; // Don't render on the server
+    // Initial render on the server will be null, the component will render on the client.
+    // This is to avoid hydration errors with the date.
+    return null;
   }
 
   return (
-    <footer className="bg-card py-10 mt-10 border-t">
+    <footer className="bg-card py-10 mt-16 border-t">
       <div className="container mx-auto px-4 text-center text-card-foreground">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
@@ -47,14 +49,15 @@ export function Footer() {
                     <MapPin className="h-4 w-4 text-accent" />
                     <span>4th Main, Arekere, Bengaluru</span>
                 </div>
-                <a href="tel:8294924270" className="flex items-center gap-3 hover:text-accent transition-colors">
-                    <Phone className="h-4 w-4 text-accent" />
-                    <span>8294924270</span>
-                </a>
-                 <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
-                    <WhatsappIcon className="h-4 w-4 text-accent" />
-                    <span>WhatsApp</span>
+                <div className="flex items-center gap-3">
+                  <a href="tel:8294924270" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Phone className="h-4 w-4 text-accent" />
+                      <span>8294924270</span>
                   </a>
+                   <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="hover:text-green-600 transition-colors">
+                    <WhatsappIcon className="h-4 w-4 text-green-500" />
+                  </a>
+                </div>
                 <a href="mailto:corp@bigbul.in" className="flex items-center gap-3 hover:text-accent transition-colors">
                     <Mail className="h-4 w-4 text-accent" />
                     <span>corp@bigbul.in</span>
