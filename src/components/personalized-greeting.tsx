@@ -34,6 +34,5 @@ export function PersonalizedGreeting() {
     return <p className="text-xl md:text-2xl text-muted-foreground h-8"></p>; 
   }
   
-  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting || "\u00A0"}</p>;
+  return <p className="text-xl md:text-2xl text-muted-foreground">{greeting || " "}</p>;
 }
-
