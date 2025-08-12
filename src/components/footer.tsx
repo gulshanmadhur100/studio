@@ -3,13 +3,18 @@
 import { MapPin, Phone, Mail, Facebook } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from 'next/link';
+import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, []);
+
+  if (year === null) {
+    return null; // Don't render on the server
+  }
 
   return (
     <footer className="bg-card py-10 mt-10 border-t">
@@ -46,6 +51,10 @@ export function Footer() {
                     <Phone className="h-4 w-4 text-accent" />
                     <span>8294924270</span>
                 </a>
+                 <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
+                    <WhatsappIcon className="h-4 w-4 text-accent" />
+                    <span>WhatsApp</span>
+                  </a>
                 <a href="mailto:corp@bigbul.in" className="flex items-center gap-3 hover:text-accent transition-colors">
                     <Mail className="h-4 w-4 text-accent" />
                     <span>corp@bigbul.in</span>

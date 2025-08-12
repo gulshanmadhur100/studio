@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, Facebook } from "lucide-react";
+import { WhatsappIcon } from "./whatsapp-icon";
 
 export function ContactInfo() {
   return (
@@ -16,6 +17,12 @@ export function ContactInfo() {
           <Phone className="h-6 w-6 text-accent" />
           <a href="tel:8294924270" className="hover:text-accent transition-colors">
             8294924270
+          </a>
+        </div>
+        <div className="flex items-center gap-4">
+          <WhatsappIcon className="h-6 w-6 text-accent" />
+          <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            WhatsApp
           </a>
         </div>
         <div className="flex items-center gap-4">
