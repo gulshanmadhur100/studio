@@ -12,6 +12,11 @@ const ptSans = PT_Sans({
 export const metadata: Metadata = {
   title: 'BigBul Services - Technology, Training & Trading',
   description: 'BigBul Services offers cutting-edge technology solutions, expert-led training courses, and comprehensive trading support to help you succeed.',
+  icons: {
+    icon: 'https://placehold.co/32x32.png',
+    shortcut: 'https://placehold.co/32x32.png',
+    apple: 'https://placehold.co/180x180.png',
+  },
 };
 
 export default function RootLayout({
