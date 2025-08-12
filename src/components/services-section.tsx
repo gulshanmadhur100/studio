@@ -8,7 +8,7 @@ export function ServicesSection() {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
         Our Services
       </h2>
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service) => (
           <Link href={`/services/${service.slug}`} key={service.slug} className="block group">
             <Card className="h-full hover:shadow-lg transition-shadow rounded-lg group-hover:border-accent">
@@ -16,12 +16,10 @@ export function ServicesSection() {
                 <div className="p-3 bg-accent/10 rounded-full">
                   {service.icon}
                 </div>
-                <div className="flex-1">
-                  <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mt-2 text-base">
+                 <CardTitle className="font-headline text-lg mb-2">{service.title}</CardTitle>
+                <p className="text-muted-foreground text-sm">
                   {service.description}
                 </p>
               </CardContent>
