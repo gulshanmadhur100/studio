@@ -16,8 +16,9 @@ export function PersonalizedGreeting() {
     if (isMounted) {
       getPersonalizedGreeting({})
         .then((response) => {
-          if (response.greeting) {
-            setGreeting(response.greeting);
+          if (response.greetings && response.greetings.length > 0) {
+            const randomIndex = Math.floor(Math.random() * response.greetings.length);
+            setGreeting(response.greetings[randomIndex]);
           } else {
             // Fallback greeting if the flow returns nothing
             setGreeting("Welcome! Discover what we have to offer.");
