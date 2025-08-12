@@ -12,7 +12,7 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4">
         <HeroSection />
         <ServicesSection />
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 my-16">
           <ContactInfo />
           <ContactSection />
         </div>

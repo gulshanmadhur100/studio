@@ -4,11 +4,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export function ServicesSection() {
   return (
-    <section className="py-10 md:py-12" id="services">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
+    <section className="py-16 md:py-24" id="services">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-headline">
         Our Services
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {services.map((service) => (
           <Link href={`/services/${service.slug}`} key={service.slug} className="block group">
             <Card className="h-full hover:shadow-lg transition-shadow rounded-lg group-hover:border-accent">

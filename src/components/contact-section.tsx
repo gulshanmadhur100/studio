@@ -21,8 +21,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-10 md:py-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
+    <section id="contact" className="py-12 md:py-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-headline">
         Contact Us
       </h2>
       <Card className="w-full">
