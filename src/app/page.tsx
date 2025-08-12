@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ServicesSection } from "@/components/services-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ContactSection } from "@/components/contact-section";
 
 export default function Home() {
   return (
@@ -9,7 +10,10 @@ export default function Home() {
       <Header />
       <main className="flex-grow container mx-auto px-4">
         <HeroSection />
-        <ServicesSection />
+        <div className="grid lg:grid-cols-2 lg:gap-16">
+          <ServicesSection />
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>

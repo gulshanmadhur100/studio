@@ -14,6 +14,9 @@ export function Header() {
           <Link href="/#services" className="text-muted-foreground hover:text-accent transition-colors">
             Services
           </Link>
+           <Link href="/#contact" className="text-muted-foreground hover:text-accent transition-colors">
+            Contact
+          </Link>
         </nav>
       </div>
     </header>
