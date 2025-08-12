@@ -3,9 +3,13 @@ import { Phone, Mail, Facebook } from "lucide-react";
 
 export function ContactInfo() {
   return (
-    <Card className="w-full mt-8">
+    <section className="py-10 md:py-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
+        Contact Information
+      </h2>
+    <Card className="w-full">
       <CardHeader>
-        <CardTitle>Contact Information</CardTitle>
+        <CardTitle>Get in touch</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center gap-4">
@@ -28,5 +32,6 @@ export function ContactInfo() {
         </div>
       </CardContent>
     </Card>
+    </section>
   );
 }

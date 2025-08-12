@@ -8,7 +8,7 @@ export function ServicesSection() {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 font-headline">
         Our Services
       </h2>
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 gap-8">
         {services.map((service) => (
           <Link href={`/services/${service.slug}`} key={service.slug} className="block group">
             <Card className="h-full hover:shadow-lg transition-shadow rounded-lg group-hover:border-accent">
