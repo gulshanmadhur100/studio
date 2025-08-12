@@ -7,10 +7,10 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [currentYear, setCurrentYear] = useState('');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear().toString());
+    setIsClient(true);
   }, []);
 
   return (
@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-          {currentYear ? `© ${currentYear} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
+           {isClient ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : '© BigBul. All rights reserved.'}
         </p>
       </div>
     </footer>
