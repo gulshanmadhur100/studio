@@ -1,3 +1,4 @@
+
 "use client";
 
 import { MapPin, Mail, Facebook } from "lucide-react";
@@ -59,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : `© 2024 BigBul. All rights reserved.`}
+           {isMounted ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : '© 2024 BigBul. All rights reserved.'}
         </p>
       </div>
     </footer>
