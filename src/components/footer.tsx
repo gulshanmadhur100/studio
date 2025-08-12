@@ -49,9 +49,9 @@ export function Footer() {
                     <MapPin className="h-4 w-4 text-accent" />
                     <span>4th Main, Arekere, Bengaluru</span>
                 </div>
-                <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-green-600 transition-colors">
+                <a href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
                   <WhatsappIcon className="h-4 w-4 text-green-500" />
-                  <span className="hover:text-accent transition-colors">8294924270</span>
+                  <span>8294924270</span>
                 </a>
                 <a href="mailto:corp@bigbul.in" className="flex items-center gap-3 hover:text-accent transition-colors">
                     <Mail className="h-4 w-4 text-accent" />

@@ -14,12 +14,10 @@ export function ContactInfo() {
           <CardTitle>Get in touch</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex items-center gap-4">
-            <Link href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="flex items-center gap-4">
-              <WhatsappIcon className="h-6 w-6 text-green-500 hover:text-green-600 transition-colors" />
-               <span className="hover:text-accent transition-colors">8294924270</span>
-            </Link>
-          </div>
+          <Link href="https://wa.me/8294924270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+            <WhatsappIcon className="h-6 w-6 text-green-500 group-hover:text-green-600 transition-colors" />
+            <span className="group-hover:text-accent transition-colors">8294924270</span>
+          </Link>
           <div className="flex items-center gap-4">
             <Mail className="h-6 w-6 text-accent" />
             <a href="mailto:corp@bigbul.in" className="hover:text-accent transition-colors">
