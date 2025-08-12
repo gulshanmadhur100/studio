@@ -10,6 +10,7 @@ export function Footer() {
   const [copyright, setCopyright] = useState<string | null>(null);
 
   useEffect(() => {
+    // This ensures the code only runs on the client, after hydration
     setCopyright(`© ${new Date().getFullYear()} BigBul. All rights reserved.`);
   }, []);
 
@@ -60,7 +61,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50 h-5">
-           {copyright}
+           {copyright || '\u00A0'}
         </p>
       </div>
     </footer>
