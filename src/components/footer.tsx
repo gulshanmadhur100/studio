@@ -8,11 +8,18 @@ import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
   const [copyright, setCopyright] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // This ensures the code only runs on the client, after hydration
-    setCopyright(`© ${new Date().getFullYear()} BigBul. All rights reserved.`);
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      setCopyright(`© ${new Date().getFullYear()} BigBul. All rights reserved.`);
+    }
+  }, [isMounted]);
+
 
   return (
     <footer className="bg-card py-10 mt-16 border-t">
@@ -61,7 +68,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50 h-5">
-           {copyright || '\u00A0'}
+           {isMounted ? copyright : '\u00A0'}
         </p>
       </div>
     </footer>
