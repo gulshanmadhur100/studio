@@ -1,6 +1,15 @@
+"use client";
+
 import { MapPin, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-card py-6 mt-10 border-t">
       <div className="container mx-auto px-4 text-center text-card-foreground">
@@ -15,7 +24,7 @@ export function Footer() {
           </a>
         </div>
         <p className="text-sm text-muted-foreground mt-6">
-          © {new Date().getFullYear()} BigBul. All rights reserved.
+          © {year} BigBul. All rights reserved.
         </p>
       </div>
     </footer>
