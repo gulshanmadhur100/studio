@@ -8,11 +8,17 @@ import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
   const [year, setYear] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // This effect runs only on the client, after the initial render.
-    setYear(new Date().getFullYear());
-  }, []); // Empty dependency array ensures this runs once on mount.
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      setYear(new Date().getFullYear());
+    }
+  }, [isMounted]);
 
 
   return (
@@ -62,7 +68,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {year ? `© ${year} BigBul. All rights reserved.` : `© BigBul. All rights reserved.`}
+           {isMounted && year ? `© ${year} BigBul. All rights reserved.` : `© BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>
