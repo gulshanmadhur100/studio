@@ -1,5 +1,3 @@
-
-'use server';
 /**
  * @fileOverview A personalized greeting utility.
  *
@@ -12,13 +10,13 @@ import { z } from 'zod';
 
 const PersonalizedGreetingInputSchema = z.object({
   // In a real app, you'd pass user history here.
-  // For now, this is unused.
+  // For now, we'll just use a placeholder.
   userId: z.string().optional(),
 });
 export type PersonalizedGreetingInput = z.infer<typeof PersonalizedGreetingInputSchema>;
 
 const PersonalizedGreetingOutputSchema = z.object({
-  greetings: z.array(z.string()).describe('A list of possible greeting messages.'),
+  greeting: z.string().describe('The personalized greeting message.'),
 });
 export type PersonalizedGreetingOutput = z.infer<typeof PersonalizedGreetingOutputSchema>;
 
@@ -32,11 +30,13 @@ const greetings = [
 ];
 
 /**
- * Returns a list of possible greetings.
+ * Selects a random greeting from a predefined list.
  * This function is now a simple utility and does not use AI.
  * @param _input - The input object (currently unused).
  * @returns A promise that resolves to the personalized greeting output.
  */
 export async function getPersonalizedGreeting(_input: PersonalizedGreetingInput): Promise<PersonalizedGreetingOutput> {
-  return { greetings };
+  const randomIndex = Math.floor(Math.random() * greetings.length);
+  const greeting = greetings[randomIndex];
+  return { greeting };
 }

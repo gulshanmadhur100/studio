@@ -5,34 +5,35 @@ import { useEffect, useState } from "react";
 import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState<string | null>(null);
+  const [greeting, setGreeting] = useState<string>("Welcome! Discover what we have to offer.");
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    getPersonalizedGreeting({})
-      .then((response) => {
-        if (response.greetings && response.greetings.length > 0) {
-          const randomIndex = Math.floor(Math.random() * response.greetings.length);
-          setGreeting(response.greetings[randomIndex]);
-        } else {
-          setGreeting("Welcome! Discover what we have to offer.");
-        }
-      })
-      .catch((error) => {
-        console.error("Failed to fetch personalized greeting:", error);
-        setGreeting("Welcome! Discover what we have to offer.");
-      });
   }, []);
 
+  useEffect(() => {
+    if (isMounted) {
+      getPersonalizedGreeting({})
+        .then((response) => {
+          setGreeting(response.greeting);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch personalized greeting:", error);
+          // Fallback greeting is already set
+        });
+    }
+  }, [isMounted]);
+
   if (!isMounted) {
+    // Render a placeholder or nothing on the server and initial client render
+    // to avoid layout shift, we can use a placeholder with the same height.
     return <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">&nbsp;</p>;
   }
 
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
-      {greeting ?? <>&nbsp;</>}
+      {greeting}
     </p>
   );
 }
-
