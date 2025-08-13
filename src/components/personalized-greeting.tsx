@@ -6,22 +6,28 @@ import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState("\u00A0"); // Default to a non-breaking space to prevent layout shift
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // This code runs only on the client, after the component has mounted.
-    getPersonalizedGreeting({})
-      .then((response) => {
-        setGreeting(response.greeting);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch personalized greeting:", error);
-        setGreeting("Welcome! Discover what we have to offer."); // Fallback greeting
-      });
-  }, []); // Empty dependency array ensures this runs only once on mount
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      getPersonalizedGreeting({})
+        .then((response) => {
+          setGreeting(response.greeting);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch personalized greeting:", error);
+          setGreeting("Welcome! Discover what we have to offer."); // Fallback greeting
+        });
+    }
+  }, [isClient]);
 
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
-      {greeting}
+      {isClient ? greeting : "\u00A0"}
     </p>
   );
 }
