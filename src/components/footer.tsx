@@ -12,13 +12,8 @@ export function Footer() {
 
   useEffect(() => {
     setIsMounted(true);
+    setYear(new Date().getFullYear());
   }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      setYear(new Date().getFullYear());
-    }
-  }, [isMounted]);
 
   return (
     <footer className="bg-card py-10 mt-16 border-t">
@@ -73,3 +68,4 @@ export function Footer() {
     </footer>
   );
 }
+

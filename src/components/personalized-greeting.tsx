@@ -10,25 +10,20 @@ export function PersonalizedGreeting() {
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      getPersonalizedGreeting({})
-        .then((response) => {
-          if (response.greetings && response.greetings.length > 0) {
-            const randomIndex = Math.floor(Math.random() * response.greetings.length);
-            setGreeting(response.greetings[randomIndex]);
-          } else {
-            setGreeting("Welcome! Discover what we have to offer.");
-          }
-        })
-        .catch((error) => {
-          console.error("Failed to fetch personalized greeting:", error);
+    getPersonalizedGreeting({})
+      .then((response) => {
+        if (response.greetings && response.greetings.length > 0) {
+          const randomIndex = Math.floor(Math.random() * response.greetings.length);
+          setGreeting(response.greetings[randomIndex]);
+        } else {
           setGreeting("Welcome! Discover what we have to offer.");
-        });
-    }
-  }, [isMounted]);
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch personalized greeting:", error);
+        setGreeting("Welcome! Discover what we have to offer.");
+      });
+  }, []);
 
   if (!isMounted) {
     return <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">&nbsp;</p>;
@@ -40,3 +35,4 @@ export function PersonalizedGreeting() {
     </p>
   );
 }
+
