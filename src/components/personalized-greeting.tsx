@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState("\u00A0"); // Default to a non-breaking space to prevent layout shift
+  const [greeting, setGreeting] = useState("\u00A0"); // Default to a non-breaking space
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
