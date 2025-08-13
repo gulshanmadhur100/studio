@@ -6,25 +6,24 @@ import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
-    getPersonalizedGreeting({})
-      .then((response) => {
-        if (isMounted) {
-          setGreeting(response.greeting);
-        }
-      })
-      .catch((error) => {
-        console.error("Failed to fetch personalized greeting:", error);
-        if (isMounted) {
-            setGreeting("Welcome! Discover what we have to offer.");
-        }
-      });
-    return () => {
-      isMounted = false;
-    };
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      getPersonalizedGreeting({})
+        .then((response) => {
+          setGreeting(response.greeting);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch personalized greeting:", error);
+          setGreeting("Welcome! Discover what we have to offer.");
+        });
+    }
+  }, [isMounted]);
 
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
