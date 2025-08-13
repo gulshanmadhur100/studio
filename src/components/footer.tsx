@@ -7,10 +7,11 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [isMounted, setIsMounted] = useState(false);
+  const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
-    setIsMounted(true);
+    // This ensures the date is only calculated on the client after hydration.
+    setYear(new Date().getFullYear());
   }, []);
 
   return (
@@ -60,7 +61,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : "© BigBul. All rights reserved."}
+           {`© ${year} BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>
