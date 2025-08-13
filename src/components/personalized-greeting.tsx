@@ -6,14 +6,14 @@ import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState("\u00A0"); // Default to a non-breaking space to prevent layout shift
-  const [isClient, setIsClient] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (isClient) {
+    if (isMounted) {
       getPersonalizedGreeting({})
         .then((response) => {
           setGreeting(response.greeting);
@@ -23,7 +23,7 @@ export function PersonalizedGreeting() {
           setGreeting("Welcome! Discover what we have to offer."); // Fallback greeting
         });
     }
-  }, [isClient]);
+  }, [isMounted]);
 
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
