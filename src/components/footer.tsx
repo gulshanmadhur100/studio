@@ -7,12 +7,9 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
-  const [isClient, setIsClient] = useState(false);
+  const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
-    // This effect runs only on the client, after the component has mounted.
-    setIsClient(true);
     setYear(new Date().getFullYear());
   }, []);
 
@@ -63,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isClient ? `© ${year} BigBul. All rights reserved.` : `© ${new Date().getFullYear()} BigBul. All rights reserved.`}
+           {year ? `© ${year} BigBul. All rights reserved.` : `© ${new Date().getFullYear()} BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>

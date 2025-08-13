@@ -5,24 +5,30 @@ import { useEffect, useState } from "react";
 import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState("Welcome! Discover what we have to offer.");
-  const [isClient, setIsClient] = useState(false);
+  const [greeting, setGreeting] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
+    let isMounted = true;
     getPersonalizedGreeting({})
       .then((response) => {
-        setGreeting(response.greeting);
+        if (isMounted) {
+          setGreeting(response.greeting);
+        }
       })
       .catch((error) => {
         console.error("Failed to fetch personalized greeting:", error);
-        // Fallback is already set in initial state
+        if (isMounted) {
+            setGreeting("Welcome! Discover what we have to offer.");
+        }
       });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
-      {isClient ? greeting : "Welcome! Discover what we have to offer."}
+      {greeting ?? <>&nbsp;</>}
     </p>
   );
 }
