@@ -13,6 +13,8 @@ export function Footer() {
     setIsMounted(true);
   }, []);
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-card py-10 mt-16 border-t">
       <div className="container mx-auto px-4 text-center text-card-foreground">
@@ -60,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${new Date().getFullYear()} BigBul. All rights reserved.` : `© ${new Date().getFullYear()} BigBul. All rights reserved.`}
+           {isMounted ? `© ${currentYear} BigBul. All rights reserved.` : `© ${currentYear} BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>
