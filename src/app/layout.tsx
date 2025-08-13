@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: 'BigBul Services - Technology, Training & Trading',
   description: 'BigBul Services offers cutting-edge technology solutions, expert-led training courses, and comprehensive trading support to help you succeed.',
   icons: {
-    icon: 'https://placehold.co/32x32.png',
-    shortcut: 'https://placehold.co/32x32.png',
-    apple: 'https://placehold.co/180x180.png',
+    icon: 'https://placehold.co/32x32/6495ED/FFFFFF/png?text=B',
+    shortcut: 'https://placehold.co/32x32/6495ED/FFFFFF/png?text=B',
+    apple: 'https://placehold.co/180x180/6495ED/FFFFFF/png?text=B',
   },
 };
 
