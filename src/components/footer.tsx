@@ -8,18 +8,10 @@ import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
   const [year, setYear] = useState(new Date().getFullYear());
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setYear(new Date().getFullYear());
   }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      setYear(new Date().getFullYear());
-    }
-  }, [isMounted]);
-
 
   return (
     <footer className="bg-card py-10 mt-16 border-t">
@@ -68,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${year} BigBul. All rights reserved.` : `© ${new Date().getFullYear()} BigBul. All rights reserved.`}
+           {`© ${year} BigBul. All rights reserved.`}
         </p>
       </div>
     </footer>
