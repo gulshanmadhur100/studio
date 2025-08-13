@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState<string>("Welcome! Discover what we have to offer.");
+  const [greeting, setGreeting] = useState<string>("\u00A0"); // Default to a non-breaking space
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export function PersonalizedGreeting() {
         })
         .catch((error) => {
           console.error("Failed to fetch personalized greeting:", error);
-          // Fallback greeting is already set in useState
+          setGreeting("Welcome! Discover what we have to offer."); // Set a fallback on error
         });
     }
   }, [isMounted]);
