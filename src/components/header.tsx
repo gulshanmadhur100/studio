@@ -3,13 +3,11 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { LoginDialog } from "./login-dialog";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
 export function Header() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   return (
@@ -33,9 +31,6 @@ export function Header() {
           <Link href="/#contact">
             <Button variant="outline">Get in touch</Button>
           </Link>
-          <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
-            <Button onClick={() => setIsLoginOpen(true)}>Log in</Button>
-          </LoginDialog>
         </div>
 
         {/* Mobile Menu */}
@@ -62,9 +57,6 @@ export function Header() {
                     <Link href="/#contact" onClick={() => setIsSheetOpen(false)}>
                         <Button variant="outline" className="w-full">Get in touch</Button>
                     </Link>
-                     <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
-                        <Button onClick={() => { setIsSheetOpen(false); setIsLoginOpen(true);}} className="w-full">Log in</Button>
-                    </LoginDialog>
                 </div>
               </div>
             </SheetContent>
