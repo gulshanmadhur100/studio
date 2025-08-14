@@ -8,14 +8,22 @@ export function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
     getPersonalizedGreeting({})
       .then((response) => {
-        setGreeting(response.greeting);
+        if (isMounted) {
+          setGreeting(response.greeting);
+        }
       })
       .catch((error) => {
         console.error("Failed to fetch personalized greeting:", error);
-        setGreeting("Welcome! Discover what we have to offer.");
+        if (isMounted) {
+          setGreeting("Welcome! Discover what we have to offer.");
+        }
       });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
