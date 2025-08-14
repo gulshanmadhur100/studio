@@ -1,12 +1,16 @@
+
 "use client";
 
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { LoginDialog } from "./login-dialog";
 import { useState } from "react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
 export function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   return (
     <header className="bg-background/80 py-4 border-b sticky top-0 z-50 backdrop-blur-sm">
@@ -32,6 +36,39 @@ export function Header() {
           <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
             <Button onClick={() => setIsLoginOpen(true)}>Log in</Button>
           </LoginDialog>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="grid gap-6 p-6">
+                <Link href="/" className="text-lg font-medium hover:text-accent transition-colors" onClick={() => setIsSheetOpen(false)}>
+                  Home
+                </Link>
+                <Link href="/#services" className="text-lg font-medium hover:text-accent transition-colors" onClick={() => setIsSheetOpen(false)}>
+                  Services
+                </Link>
+                <Link href="/#contact" className="text-lg font-medium hover:text-accent transition-colors" onClick={() => setIsSheetOpen(false)}>
+                  Contact
+                </Link>
+                <div className="flex flex-col gap-4 mt-4">
+                    <Link href="/#contact" onClick={() => setIsSheetOpen(false)}>
+                        <Button variant="outline" className="w-full">Get in touch</Button>
+                    </Link>
+                     <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+                        <Button onClick={() => { setIsSheetOpen(false); setIsLoginOpen(true);}} className="w-full">Log in</Button>
+                    </LoginDialog>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
