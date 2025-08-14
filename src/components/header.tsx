@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { LoginDialog } from "./login-dialog";
+import { useState } from "react";
 
 export function Header() {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
   return (
     <header className="bg-background/80 py-4 border-b sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -23,7 +29,9 @@ export function Header() {
           <Link href="/#contact">
             <Button variant="outline">Get in touch</Button>
           </Link>
-          <Button>Log in</Button>
+          <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+            <Button onClick={() => setIsLoginOpen(true)}>Log in</Button>
+          </LoginDialog>
         </div>
       </div>
     </header>
