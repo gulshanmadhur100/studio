@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
+import { LoginDialog } from "./login-dialog";
 
 export function Header() {
   return (
@@ -26,15 +27,17 @@ export function Header() {
           <Button asChild variant="outline">
              <Link href="/#contact">Get in touch</Link>
           </Button>
-          <Button>Log in</Button>
+          <LoginDialog />
         </div>
 
         {/* Mobile Menu Icon (no functionality) */}
         <div className="md:hidden">
-          <Button variant="outline" size="icon">
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Open menu</span>
-          </Button>
+            <LoginDialog>
+                <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open menu</span>
+                </Button>
+            </LoginDialog>
         </div>
       </div>
     </header>
