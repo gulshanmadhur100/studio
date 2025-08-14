@@ -14,7 +14,6 @@ export function PersonalizedGreeting() {
       })
       .catch((error) => {
         console.error("Failed to fetch personalized greeting:", error);
-        // Fallback greeting in case of an error
         setGreeting("Welcome! Discover what we have to offer.");
       });
   }, []);
