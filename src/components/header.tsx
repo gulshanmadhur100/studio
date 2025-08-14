@@ -31,6 +31,7 @@ export function Header() {
           <Link href="/#contact">
             <Button variant="outline">Get in touch</Button>
           </Link>
+          <Button>Log in</Button>
         </div>
 
         {/* Mobile Menu */}
@@ -57,6 +58,7 @@ export function Header() {
                     <Link href="/#contact" onClick={() => setIsSheetOpen(false)}>
                         <Button variant="outline" className="w-full">Get in touch</Button>
                     </Link>
+                    <Button className="w-full">Log in</Button>
                 </div>
               </div>
             </SheetContent>
