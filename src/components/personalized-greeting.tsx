@@ -6,42 +6,22 @@ import { getPersonalizedGreeting } from "@/ai/flows/personalized-greeting-flow";
 
 export function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState<string | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    // This effect runs only on the client, after hydration.
+    getPersonalizedGreeting({})
+      .then((response) => {
+        setGreeting(response.greeting);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch personalized greeting:", error);
+        // Fallback greeting
+        setGreeting("Welcome! Discover what we have to offer.");
+      });
+  }, []); // Empty dependency array ensures this runs once on mount.
 
-  useEffect(() => {
-    if (isMounted) {
-      let isSubscribed = true;
-      getPersonalizedGreeting({})
-        .then((response) => {
-          if (isSubscribed) {
-            setGreeting(response.greeting);
-          }
-        })
-        .catch((error) => {
-          console.error("Failed to fetch personalized greeting:", error);
-          if (isSubscribed) {
-            // Fallback greeting
-            setGreeting("Welcome! Discover what we have to offer.");
-          }
-        });
-      return () => {
-        isSubscribed = false;
-      };
-    }
-  }, [isMounted]);
-
-  if (!isMounted) {
-    return (
-      <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
-        &nbsp;
-      </p>
-    );
-  }
-
+  // Render a placeholder on the server and initial client render.
+  // The actual greeting will be rendered in a subsequent client-side render.
   return (
     <p className="text-xl md:text-2xl text-muted-foreground h-[32px]">
       {greeting ?? <>&nbsp;</>}

@@ -7,13 +7,12 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
-  const [isMounted, setIsMounted] = useState(false);
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    // This effect runs only on the client, after hydration.
     setYear(new Date().getFullYear());
-  }, []);
+  }, []); // Empty dependency array ensures this runs once on mount.
 
   return (
     <footer className="bg-card py-10 mt-16 border-t">
@@ -62,7 +61,8 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {isMounted ? `© ${year} BigBul. All rights reserved.` : "© BigBul. All rights reserved."}
+           {/* Render a static string on server and initial client render, then update with the year */}
+           {year ? `© ${year} BigBul. All rights reserved.` : "© BigBul. All rights reserved."}
         </p>
       </div>
     </footer>
