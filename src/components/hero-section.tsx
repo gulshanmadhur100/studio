@@ -12,17 +12,17 @@ export function HeroSection() {
           Your partner in technology, training, and trading success.
         </p>
       <div className="mt-8 flex justify-center gap-4">
-        <Link href="#services">
-          <Button size="lg">
+        <Button asChild size="lg">
+          <Link href="#services">
             Explore Services
             <ArrowRight />
-          </Button>
-        </Link>
-        <Link href="#contact">
-          <Button size="lg" variant="outline">
+          </Link>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <Link href="#contact">
             Contact Us
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </section>
   );
