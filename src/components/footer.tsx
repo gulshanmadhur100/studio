@@ -7,9 +7,11 @@ import Link from 'next/link';
 import { WhatsappIcon } from "./whatsapp-icon";
 
 export function Footer() {
+  const [isMounted, setIsMounted] = useState(false);
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
+    setIsMounted(true);
     setYear(new Date().getFullYear());
   }, []);
 
@@ -60,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-8 pt-8 border-t border-border/50">
-           {year ? `© ${year} BigBul. All rights reserved.` : "© BigBul. All rights reserved."}
+           {isMounted && year ? `© ${year} BigBul. All rights reserved.` : "© BigBul. All rights reserved."}
         </p>
       </div>
     </footer>
