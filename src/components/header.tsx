@@ -19,7 +19,12 @@ export function Header() {
             Contact
           </Link>
         </nav>
-        <Button variant="outline" className="hidden md:flex">Get in touch</Button>
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="/#contact">
+            <Button variant="outline">Get in touch</Button>
+          </Link>
+          <Button>Log in</Button>
+        </div>
       </div>
     </header>
   );
