@@ -8,7 +8,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,7 +21,13 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import React from "react";
 
-export function LoginDialog({ children }: { children?: React.ReactNode }) {
+export function LoginDialog({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   const { toast } = useToast();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,31 +36,18 @@ export function LoginDialog({ children }: { children?: React.ReactNode }) {
     const role = formData.get("role");
     const password = formData.get("password");
 
-    // Here you would typically handle the login logic,
-    // for example, by calling an API endpoint.
     console.log({ role, password });
-    
+
     toast({
       title: "Login Attempted",
       description: `You tried to log in as ${role}.`,
     });
 
-    // NOTE: We are not closing the dialog on submission for this example.
-    // To close it, you would manage an 'open' state and set it to false here.
+    onOpenChange(false);
   };
-  
-  const trigger = children ? (
-      <DialogTrigger asChild>{children}</DialogTrigger>
-  ) : (
-      <DialogTrigger asChild>
-          <Button>Log in</Button>
-      </DialogTrigger>
-  );
-
 
   return (
-    <Dialog>
-      {trigger}
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Log in</DialogTitle>

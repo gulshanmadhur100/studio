@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
-import { LoginDialog } from "./login-dialog";
+import { LoginButton } from "./login-button";
 
 export function Header() {
   return (
@@ -24,20 +24,18 @@ export function Header() {
           </Link>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button asChild variant="outline">
-             <Link href="/#contact">Get in touch</Link>
-          </Button>
-          <LoginDialog />
+          <Link href="/#contact" className={buttonVariants({ variant: "outline" })}>
+             Get in touch
+          </Link>
+          <LoginButton />
         </div>
 
         {/* Mobile Menu Icon (no functionality) */}
         <div className="md:hidden">
-            <LoginDialog>
-                <Button variant="outline" size="icon">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Open menu</span>
-                </Button>
-            </LoginDialog>
+            <Button variant="outline" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open menu</span>
+            </Button>
         </div>
       </div>
     </header>
