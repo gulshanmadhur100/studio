@@ -11,6 +11,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import React from "react";
 
@@ -27,10 +34,12 @@ export function SignupDialog({
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email") as string;
+    const name = formData.get("name") as string;
+    const role = formData.get("role") as string;
 
     toast({
       title: "Signup Successful",
-      description: `Welcome! Check your email at ${email} to verify your account.`,
+      description: `Welcome, ${name}! Your account as a ${role} has been created for ${email}.`,
     });
 
     onOpenChange(false);
@@ -61,17 +70,31 @@ export function SignupDialog({
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="password" name="password" className="text-right">
-                Password
+              <Label htmlFor="name" className="text-right">
+                Name
               </Label>
               <Input
-                id="password"
-                name="password"
-                type="password"
+                id="name"
+                name="name"
                 className="col-span-3"
-                placeholder="Enter a password"
+                placeholder="Enter your name"
                 required
               />
+            </div>
+             <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="role" className="text-right">
+                Role
+              </Label>
+              <Select name="role" defaultValue="customer">
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="customer">Customer</SelectItem>
+                  <SelectItem value="trainer">Trainer</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
           <DialogFooter>
