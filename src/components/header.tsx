@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
 import { LoginButton } from "./login-button";
 import { MountedClientOnly } from "./mounted-client-only";
+import { SignupButton } from "./signup-button";
 
 export function Header() {
   return (
@@ -20,18 +21,11 @@ export function Header() {
             <Link href="/#services" className="text-muted-foreground hover:text-accent transition-colors font-medium">
               Services
             </Link>
-            <Link href="/#contact" className="text-muted-foreground hover:text-accent transition-colors font-medium">
-              Contact
-            </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Button asChild variant="outline">
-              <Link href="/#contact">
-                Get in touch
-              </Link>
-            </Button>
             <MountedClientOnly>
               <LoginButton />
+              <SignupButton />
             </MountedClientOnly>
           </div>
         </div>
