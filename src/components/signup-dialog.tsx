@@ -26,12 +26,11 @@ export function SignupDialog({
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
 
     toast({
       title: "Signup Successful",
-      description: `Welcome, ${name}! Check your email at ${email} to verify your account.`,
+      description: `Welcome! Check your email at ${email} to verify your account.`,
     });
 
     onOpenChange(false);
@@ -48,17 +47,6 @@ export function SignupDialog({
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Name
-              </Label>
-              <Input
-                id="name"
-                name="name"
-                className="col-span-3"
-                required
-              />
-            </div>
              <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="email" className="text-right">
                 Email
@@ -68,6 +56,7 @@ export function SignupDialog({
                 name="email"
                 type="email"
                 className="col-span-3"
+                placeholder="Enter your email"
                 required
               />
             </div>
@@ -80,6 +69,7 @@ export function SignupDialog({
                 name="password"
                 type="password"
                 className="col-span-3"
+                placeholder="Enter a password"
                 required
               />
             </div>
