@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ContactSection } from "@/components/contact-section";
 import { ContactInfo } from "@/components/contact-info";
+import { MountedClientOnly } from "@/components/mounted-client-only";
 
 export default function Home() {
   return (
@@ -14,10 +15,12 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4">
         <HeroSection />
         <ServicesSection />
-        <div className="grid md:grid-cols-2 gap-12 mt-16">
-          <ContactInfo />
-          <ContactSection />
-        </div>
+        <MountedClientOnly>
+          <div className="grid md:grid-cols-2 gap-12 mt-16">
+            <ContactInfo />
+            <ContactSection />
+          </div>
+        </MountedClientOnly>
       </main>
       <Footer />
     </div>
