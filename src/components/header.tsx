@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Button, buttonVariants } from "./ui/button";
 import { LoginButton } from "./login-button";
 import { MountedClientOnly } from "./mounted-client-only";
 import { SignupButton } from "./signup-button";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
@@ -26,6 +26,7 @@ export function Header() {
             <MountedClientOnly>
               <LoginButton />
               <SignupButton />
+              <ThemeToggle />
             </MountedClientOnly>
           </div>
         </div>
