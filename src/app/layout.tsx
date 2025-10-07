@@ -34,6 +34,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="bg-primary text-primary-foreground text-center py-2 text-sm">
+            We are updating, please stay tuned!
+          </div>
           {children}
           <Toaster />
         </ThemeProvider>
